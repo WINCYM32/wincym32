@@ -1,0 +1,231 @@
+    /* Animaciones */
+    @keyframes slideInFromTop {
+        0% {
+            transform: translateY(-100%);  /* Todo está fuera de la pantalla hacia arriba */
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slideInForLogo {
+        0% {
+            transform: translate(-100%, -100%); /* Logo fuera de la pantalla, en la esquina superior izquierda */
+            opacity: 0;
+        }
+        50% {
+            transform: translate(50%, 50%); /* Moverlo diagonalmente hacia el centro */
+            opacity: 1;
+        }
+        70% {
+            transform: translate(10%, 10%); /* Balanceo hacia el centro */
+            opacity: 1;
+        }
+        100% {
+            transform: translate(0, 0); /* Logo en su posición final */
+            opacity: 1;
+        }
+    }
+    
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            font-size: 0px; /* Empieza con tamaño 0 */
+        }
+        100% {
+            opacity: 1;
+            font-size: 78px; /* Finaliza con tamaño 78px */
+        }
+    }
+    
+    /* Animaciones adicionales */
+    @keyframes slideInFromLeft {
+        0% {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slideInFromBottom {
+        0% {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    
+    body, html {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: white;
+        text-decoration: none;
+        opacity: 0; /* Los elementos estarán ocultos al principio */
+        animation: slideInFromTop 1.5s ease-in-out 2s forwards; /* Todos los elementos entran desde arriba con retraso */
+    }
+    
+    .wc-background1 {
+        position: fixed;
+        top: -2%;
+        right: -140%;
+        width: 2000px; /* Ocupa todo el ancho de la pantalla */
+        height: 60%; /* Opcional: si quieres que también ocupe toda la altura */
+        background-image: url('Sky.gif');
+        background-size: cover; /* Asegura que la imagen se ajuste al área */
+        background-repeat: no-repeat;
+        background-position: center; /* Centra la imagen */
+        opacity: 0; /* Oculto por defecto */
+        transition: opacity 1s ease-in-out; /* Aparece suavemente */
+        z-index: 0; /* Asegura que esté detrás de todo */
+    }
+    .wc-logo {
+        display: flex;
+        align-items: center;
+        position: relative;
+        opacity: 0; /* El logo está oculto inicialmente */
+        animation: slideInForLogo 1.5s ease-in-out 2s forwards; /* Animación de entrada para el logo con retraso */
+    }
+    
+    #wc-icon {
+        width: 170px;
+        height: auto;
+        margin-right: 10px;
+        pointer-events: none;
+        position: relative;
+    }
+    
+    /* Crear el reflejo debajo del logo, que aparece después del logo */
+    .wc-logo::after {
+        content: "";
+        position: absolute;
+        top: 100%; /* Coloca el reflejo justo debajo */
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('WC-SecretLogo.png'); /* Usa la misma imagen del logo */
+        background-size: contain;
+        background-repeat: no-repeat;
+        transform: scaleY(-0.7); /* Invierte el logo verticalmente y lo aplasta */
+        filter: blur(3px); /* Desenfoque del reflejo */
+        opacity: 0; /* El reflejo está oculto al principio */
+        z-index: -1; /* Asegura que el reflejo esté por debajo del logo */
+        animation: reflectAppear 500ms ease-in-out 3.10s forwards; /* El reflejo aparece después de 4 segundos */
+    }
+    
+    /* Animación para hacer que el reflejo aparezca */
+    @keyframes reflectAppear {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 0.5; /* El reflejo será parcialmente visible */
+        }
+    }
+    .wc-text-container,
+    .wc-text,
+    .wc-text-last,
+    .wc-subtext,
+    .registered-symbol {
+        opacity: 0; /* Inicialmente invisible */
+        animation-delay: 4s; /* Retrasar las animaciones de los otros elementos */
+    }
+    
+    .wc-text-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+        animation: slideInFromLeft 1.5s ease-in-out 4s forwards; /* Retraso para la animación */
+    }
+    
+    
+    .wc-text {
+        background-repeat: no-repeat;
+        font-size: 78px;
+        color: #000000;
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        line-height: 1;
+        position: relative;
+        pointer-events: none;
+        animation: slideInFromTop 1.5s ease-in-out 4s forwards; /* Retraso para la animación */
+    }
+    
+    .wc-text::after {
+        content: "Wincym";
+        position: absolute;
+        top: 100%;
+        left: 0;
+        font-size: 78px;
+        color: rgba(0, 0, 0, 0.3);
+        transform: scaleY(-1) skewX(-20deg); /* Invertir inclinación */
+        filter: blur(3px);
+    }
+    
+    .wc-text-last {
+        font-size: 58px;
+        color: rgb(240, 80, 6);
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        position: absolute;
+        bottom: 25px;
+        left: 308px;
+        pointer-events: none;
+        animation: slideInFromBottom 1.5s ease-in-out 4s forwards; /* Retraso para la animación */
+    }
+    
+    .wc-text-last::after {
+        content: "32";
+        position: absolute;
+        top: 180%;
+        left: 10px;
+        font-size: 58px;
+        color: rgba(240, 80, 6, 0.3);
+        transform: scaleY(-1) skewX(-20deg); /* Invertir inclinación */
+        filter: blur(3px);
+    }
+    
+    .wc-subtext {
+        font-size: 27px;
+        color: #000000;
+        font-family: Arial, sans-serif;
+        margin-top: 20px;
+        pointer-events: none;
+        animation: slideInFromBottom 1.5s ease-in-out 4s forwards; /* Retraso para la animación */
+    }
+    
+    .wc-subtext::after {
+        content: "Mxrt's";
+        position: absolute;
+        margin-top: 190px;
+        left: 12px;
+        font-size: 27px;
+        color: rgba(0, 0, 0, 0.3);
+        transform: scaleY(-1) skewX(-10deg); /* Invertir inclinación */
+        filter: blur(3px);
+    }
+    
+    .registered-symbol {
+        margin-right: 20px;
+        top: 400px;
+        font-size: 12px;
+        pointer-events: none;
+        animation: slideInFromBottom 1.5s ease-in-out 4s forwards; /* Retraso para la animación */
+    }
+    
+    .registered-symbol::after {
+        content: "®";
+        position: absolute;
+        top: 100px;
+    }
+    

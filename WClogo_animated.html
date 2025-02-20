@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title -->
+    <title>Sorry, Web On Maintenance!</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="Animatedlogo_01.css"/>
+    <link rel="shortcut icon" href="82.ico"/>
+    <!-- Scripts -->
+     <script id="NoZoomScript" src="scripts/NoZoom.js"></script>
+    <!-- Some Assets Before Loading The HTML Web Page -->
+    <!--Audio-->
+    <audio id="audio" src="critical.wav" preload="auto"></audio>
+</head>
+<body>
+<div class="content">
+    <div class="wc-background1"></div>
+    <div class="wc-logo">
+        <img id="wc-icon" src="WC-SecretLogo.png" alt="Icon">
+        <div class="wc-text-container">
+            <span class="wc-subtext">Mxrt's</span>
+                <a class="wc-text">
+                    <strong>Wincym</strong><sup class="registered-symbol">®</sup>
+                </a>
+                <span class="wc-text-last">32</span>
+        </div>
+    </div>
+</div>
+
+<!-- Some random Skibidi Script -->
+
+<script>
+    // Esperamos a que el DOM esté completamente cargado
+    document.addEventListener("DOMContentLoaded", function() {
+        const audioElement = document.getElementById("audio");
+        
+        // Simulamos una interacción invisible con la página para desbloquear el autoplay
+        window.addEventListener('click', function() {
+            audioElement.play().catch(function(error) {
+                console.error('Error at trying to load audio:', error);
+            });
+        });
+
+        setTimeout(() => {
+            document.body.click();
+            audioElement.play().catch(function(error) {
+                console.error('Error at load audio:', error);
+            });
+        }, 100);
+
+        // Mostrar el fondo al final de las animaciones (por ejemplo, después de 4 segundos)
+        setTimeout(() => {
+            const background = document.querySelector('.wc-background1');
+            background.style.opacity = '1'; // Hace visible el fondo
+        }, 4000); // Ajusta el tiempo según las animaciones
+    });
+</script>
+
+</body>
+</html>
